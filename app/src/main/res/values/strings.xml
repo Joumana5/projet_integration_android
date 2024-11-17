@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Projet_integration</string>
+    <string name="dash">Dashboard</string>
+    <string name="dash2">Dashboard close</string>
+
+        <string name="nav_open">Open Navigation Drawer</string>
+        <string name="nav_close">Close Navigation Drawer</string>
+
+
+
+
+</resources>
