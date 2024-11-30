@@ -14,8 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projet_integration_android.dto.ApiResponseDto;
 import com.example.projet_integration_android.dto.LoginDto;
+import com.example.projet_integration_android.dto.LoginResponseDto;
 import com.example.projet_integration_android.services.ApiService;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 
@@ -71,41 +73,65 @@ public class Login extends AppCompatActivity {
                     LoginDto loginData = new LoginDto(email, password);
                     ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
 
-                    apiService.login(loginData).enqueue(new Callback<ApiResponseDto<String>>() {
+                    apiService.login(loginData).enqueue(new Callback<LoginResponseDto>() {
+
                         @Override
-                        public void onResponse(Call<ApiResponseDto<String>> call, Response<ApiResponseDto<String>> response) {
-                            if (response.isSuccessful()) {
-                                String responseMessage = response.body().getResponseMessage();
-                                Log.v("signup", responseMessage);
-                                if (responseMessage.equals("SUCCESS")) Toast.makeText(Login.this, "Login success" , Toast.LENGTH_SHORT).show();
-                                else if (responseMessage.equals("EMAIL_NOT_VERIFIED")) {
-                                    SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+                        public void onResponse(Call<LoginResponseDto> call, Response<LoginResponseDto> response) {
+
+                            if (response.isSuccessful() &&  response.body() != null) {
+                                LoginResponseDto loginResponse = response.body();
+                                String token = loginResponse.getToken();
+                                int accountId = loginResponse.getAccountId();
+                                String responseData = loginResponse.getResponseData();
+                                String role = loginResponse.getRole();
+
+                                SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                                editor.putString("token", token);
+                                editor.putInt("accountId", accountId);
+                                editor.putString("responseData", responseData);
+                                editor.putString("role", role);
+                                editor.apply();
+
+                                if (role.equals("employee")) {
+                                    // hezou l page mta3 l employee
+                                } else if (role.equals("manager")) {
+                                    // hezou l page mta3 l manager
+                                } else {
+                                    // hezou l page mta3 l admin
+                                }
+
+                            } else {
+
+                                String errorResponse = null;
+                                try {
+                                    errorResponse = response.errorBody().string();
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Gson gson = new Gson();
+                                LoginResponseDto errorDto = gson.fromJson(errorResponse, LoginResponseDto.class);
+
+                                if (errorDto.getResponseData().equals("You did not verify your email yet, a new verification email has been sent")) {
+                                    SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
+
                                     editor.putString("email", email);
                                     editor.apply();
 
                                     Intent intent = new Intent(Login.this, VerificationActivity.class);
                                     startActivity(intent);
-                                } else if (responseMessage.equals("ACCOUNT_REJECTED")) {
-                                    Toast.makeText(Login.this, "Account rejected", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(Login.this, "Account still pending verification", Toast.LENGTH_SHORT).show();
                                 }
-
-                            } else {
-                                if (response.code() == 401)
-                                    Toast.makeText(Login.this, "Username or password incorrect", Toast.LENGTH_SHORT).show();
-                                else Log.e("signup", "Error : " + response.code());
+                                else {
+                                    Toast.makeText(Login.this, errorDto.getResponseData(), Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
 
                         @Override
-                        public void onFailure(Call<ApiResponseDto<String>> call, Throwable t) {
-                            if (t instanceof IOException) {
-                                Log.e("SignupActivity", "Network error: " + t.getMessage());
-                            } else {
-                                Log.e("SignupActivity", "Unexpected error: " + t.getMessage(), t);
-                            }
+                        public void onFailure(Call<LoginResponseDto> call, Throwable t) {
+
                         }
                     });
 
