@@ -10,13 +10,13 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface ApiService {
-    @POST("/Employee/verify-email")
+    @POST("/authentication/verify-email")
     Call<ApiResponseDto<String>> verifyEmail(@Body VerifyEmployeeDto verifyEmployeeDto);
 
-    @POST("/Employee/signup")
+    @POST("/authentication/signup")
     Call<ApiResponseDto<String>> signup(@Body EmployeeSignupDto employeeSignup);
 
-    @POST("/Employee/login")
+    @POST("/authentication/login")
     Call<ApiResponseDto<String>> login(@Body LoginDto loginDto);
 
 

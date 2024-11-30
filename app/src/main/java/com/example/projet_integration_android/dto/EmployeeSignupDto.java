@@ -9,7 +9,11 @@ public class EmployeeSignupDto {
     private String email;
     private String password;
 
-    public EmployeeSignupDto(String name, String lastName, int age, String adress, long RIB, String email, String password) {
+    private String accountType;
+
+    private String role_employer;
+
+    public EmployeeSignupDto(String name, String lastName, int age, String adress, long RIB, String email, String password, String accountType, String role_employer) {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
@@ -17,6 +21,8 @@ public class EmployeeSignupDto {
         this.RIB = RIB;
         this.email = email;
         this.password = password;
+        this.accountType = accountType;
+        this.role_employer = role_employer;
     }
 
     public String getName() {
@@ -73,5 +79,21 @@ public class EmployeeSignupDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
+    public String getRole_employer() {
+        return role_employer;
+    }
+
+    public void setRole_employer(String role_employer) {
+        this.role_employer = role_employer;
     }
 }

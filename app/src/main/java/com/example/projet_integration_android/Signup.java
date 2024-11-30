@@ -81,7 +81,7 @@ public class Signup extends AppCompatActivity {
                     ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
 
                     EmployeeSignupDto employeeSignup = new EmployeeSignupDto(
-                            firstName, lastName, Integer.parseInt(userAge), address, Integer.parseInt(ribNumber), email, password
+                            firstName, lastName, Integer.parseInt(userAge), address, Integer.parseInt(ribNumber), email, password, "employee", "rh"
                     );
 
                     apiService.signup(employeeSignup).enqueue(new Callback<ApiResponseDto<String>>() {
@@ -106,7 +106,7 @@ public class Signup extends AppCompatActivity {
                                     startActivity(intent);
                                 } else {
                                     Toast.makeText(Signup.this, "Email address already in use!", Toast.LENGTH_SHORT).show();
-                                    Log.e("signup","HTTP Error: " + response.body());
+                                    Log.e("signup","HTTP Error: " + response);
                                 }
                             } catch (Exception e) {
                                 Log.e("signup", e.getMessage());
