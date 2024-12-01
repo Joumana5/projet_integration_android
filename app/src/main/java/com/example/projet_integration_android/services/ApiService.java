@@ -4,6 +4,7 @@ import com.example.projet_integration_android.dto.ApiResponseDto;
 import com.example.projet_integration_android.dto.EmployeeSignupDto;
 import com.example.projet_integration_android.dto.LoginDto;
 import com.example.projet_integration_android.dto.LoginResponseDto;
+import com.example.projet_integration_android.dto.SendResetEmailDto;
 import com.example.projet_integration_android.dto.VerifyEmployeeDto;
 
 import retrofit2.Call;
@@ -20,5 +21,7 @@ public interface ApiService {
     @POST("/authentication/login")
     Call<LoginResponseDto> login(@Body LoginDto loginDto);
 
+    @POST("/authentication/send-password-reset-email")
+    Call<LoginResponseDto> sendResetEmail(@Body SendResetEmailDto sendResetEmailDto);
 
 }
