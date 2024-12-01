@@ -18,6 +18,14 @@
             android:id="@+id/nav_sign"
             android:icon="@drawable/baseline_account_box_24"
             android:title="Signup"/>
+        <item
+            android:id="@+id/nav_reset"
+            android:icon="@drawable/baseline_home_24"
+            android:title="Reset password"/>
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/baseline_home_24"
+            android:title="Dashboard"/>
     </group>
     <item
         android:title="">

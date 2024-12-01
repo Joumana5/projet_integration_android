@@ -94,13 +94,7 @@ public class Login extends AppCompatActivity {
                                 editor.putString("role", role);
                                 editor.apply();
 
-                                if (role.equals("employee")) {
-                                    // hezou l page mta3 l employee
-                                } else if (role.equals("manager")) {
-                                    // hezou l page mta3 l manager
-                                } else {
-                                    // hezou l page mta3 l admin
-                                }
+                                startActivity(new Intent(Login.this, UserProfile.class));
 
                             } else {
 

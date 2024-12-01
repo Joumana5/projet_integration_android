@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
+
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -43,7 +45,24 @@ public class MainActivity extends AppCompatActivity {
                 } else if (item.getItemId() == R.id.nav_logout) {
                     Toast.makeText(MainActivity.this, "Logged out", Toast.LENGTH_SHORT).show();
                     return true;
-                } else {
+
+                } else if (item.getItemId() == R.id.nav_reset) {
+                    try {
+                        startActivity(new Intent(MainActivity.this, ResetPasswordActivity.class));
+                    } catch (Exception e) {
+                        Log.e("navigation", e.getMessage());
+                    }
+                    return true;
+                }
+                else if (item.getItemId() == R.id.nav_dashboard) {
+                    try {
+                        startActivity(new Intent(MainActivity.this, Dashboard.class));
+                    } catch (Exception e) {
+                        Log.e("navigation", e.getMessage());
+                    }
+                    return true;
+                }
+                else {
                     return false;
                 }
             }
