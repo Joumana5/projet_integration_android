@@ -17,32 +17,29 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Dashboard"
+            android:name=".account_requests.ManagerRequests"
             android:exported="false" />
         <activity
-            android:name=".EmployeeAccountRequests"
+            android:name=".account_requests.EmployeeRequests"
             android:exported="false" />
         <activity
-            android:name=".UserProfile"
+            android:name=".profile.UserProfile"
             android:exported="false" />
         <activity
-            android:name=".ChangePasswordActivity"
+            android:name=".authentication.ChangePasswordActivity"
             android:exported="false"
             android:theme="@style/Theme.Projet_integration11" />
         <activity
-            android:name=".VerificationActivity"
+            android:name=".authentication.VerificationActivity"
             android:exported="false" />
         <activity
-            android:name=".Employee"
+            android:name=".authentication.Login"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".authentication.ResetPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ResetPasswordActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Signup"
+            android:name=".authentication.Signup"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

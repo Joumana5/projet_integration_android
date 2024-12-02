@@ -6,6 +6,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.example.projet_integration_android.authentication.Login;
+import com.example.projet_integration_android.authentication.ResetPasswordActivity;
+import com.example.projet_integration_android.authentication.Signup;
 import com.google.android.material.navigation.NavigationView;
 
 import android.util.Log;
@@ -54,14 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     return true;
                 }
-                else if (item.getItemId() == R.id.nav_dashboard) {
-                    try {
-                        startActivity(new Intent(MainActivity.this, Dashboard.class));
-                    } catch (Exception e) {
-                        Log.e("navigation", e.getMessage());
-                    }
-                    return true;
-                }
+
                 else {
                     return false;
                 }

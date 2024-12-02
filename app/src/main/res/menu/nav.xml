@@ -22,10 +22,6 @@
             android:id="@+id/nav_reset"
             android:icon="@drawable/baseline_home_24"
             android:title="Reset password"/>
-        <item
-            android:id="@+id/nav_dashboard"
-            android:icon="@drawable/baseline_home_24"
-            android:title="Dashboard"/>
     </group>
     <item
         android:title="">

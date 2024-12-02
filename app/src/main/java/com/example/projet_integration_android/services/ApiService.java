@@ -1,17 +1,17 @@
 package com.example.projet_integration_android.services;
 
-import com.example.projet_integration_android.UserProfile;
 import com.example.projet_integration_android.dto.ApiResponseDto;
-import com.example.projet_integration_android.dto.ChangePasswordDto;
-import com.example.projet_integration_android.dto.EmployeeRequestDto;
-import com.example.projet_integration_android.dto.EmployeeSignupDto;
-import com.example.projet_integration_android.dto.LoginDto;
-import com.example.projet_integration_android.dto.LoginResponseDto;
-import com.example.projet_integration_android.dto.ProfileDetails;
-import com.example.projet_integration_android.dto.SendResetEmailDto;
-import com.example.projet_integration_android.dto.SendResetEmailResponseDto;
-import com.example.projet_integration_android.dto.UpdateProfileDto;
-import com.example.projet_integration_android.dto.VerifyEmployeeDto;
+import com.example.projet_integration_android.dto.authentication.ChangePasswordDto;
+import com.example.projet_integration_android.dto.account_requests.Employee;
+import com.example.projet_integration_android.dto.authentication.EmployeeSignupDto;
+import com.example.projet_integration_android.dto.authentication.LoginDto;
+import com.example.projet_integration_android.dto.authentication.LoginResponseDto;
+import com.example.projet_integration_android.dto.account_requests.Manager;
+import com.example.projet_integration_android.dto.profile.ProfileDetails;
+import com.example.projet_integration_android.dto.authentication.SendResetEmailDto;
+import com.example.projet_integration_android.dto.authentication.SendResetEmailResponseDto;
+import com.example.projet_integration_android.dto.profile.UpdateProfileDto;
+import com.example.projet_integration_android.dto.authentication.VerifyEmployeeDto;
 
 import java.util.List;
 
@@ -46,6 +46,8 @@ public interface ApiService {
     Call<ApiResponseDto<String>> updateProfile(@Body UpdateProfileDto profileDetails, @Header("Authorization") String token);
 
     @GET("/account-requests/employees")
-    Call<List<EmployeeRequestDto>> getEmployeeRequests(@Header("Authorization") String token);
+    Call<List<Employee>> getEmployeeRequests(@Header("Authorization") String token);
+    @GET("/account-requests/managers")
+    Call<List<Manager>> getManagerRequests(@Header("Authorization") String token);
 
 }

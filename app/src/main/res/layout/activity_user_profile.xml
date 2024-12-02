@@ -54,4 +54,10 @@
         android:layout_height="wrap_content"
         android:text="Update profile" />
 
+    <Button
+        android:id="@+id/requestsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Account requests" />
+
 </LinearLayout>
