@@ -1,6 +1,7 @@
 package com.example.projet_integration_android.services;
 
 import com.example.projet_integration_android.dto.ApiResponseDto;
+import com.example.projet_integration_android.dto.account_requests.AccountRequestDto;
 import com.example.projet_integration_android.dto.authentication.ChangePasswordDto;
 import com.example.projet_integration_android.dto.account_requests.Employee;
 import com.example.projet_integration_android.dto.authentication.EmployeeSignupDto;
@@ -50,4 +51,12 @@ public interface ApiService {
     @GET("/account-requests/managers")
     Call<List<Manager>> getManagerRequests(@Header("Authorization") String token);
 
+    @POST("/account-requests/handle-employee")
+    Call<ApiResponseDto<String>> handleEmployee(@Header("Authorization") String token,@Body AccountRequestDto accountRequestDto);
+
+    @POST("/account-requests/handle-manager")
+    Call<ApiResponseDto<String>> handleManager(@Header("Authorization") String token,@Body AccountRequestDto accountRequestDto);
+
+    @GET("/list/AllUsersAccepted")
+    Call<List<Employee>> getAllUsersAccepted(@Header("Authorization") String token);
 }

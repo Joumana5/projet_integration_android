@@ -12,6 +12,7 @@ import com.example.projet_integration_android.dto.account_requests.Employee;
 import com.example.projet_integration_android.services.ApiService;
 import com.example.projet_integration_android.services.RetrofitClient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -22,6 +23,7 @@ public class EmployeeRequests extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private EmployeeAdapter adapter;
+    List<Employee> employeeList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,9 @@ public class EmployeeRequests extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        adapter=new EmployeeAdapter(employeeList);
+        recyclerView.setAdapter(adapter);
 
         loadEmployeeRequests();
     }

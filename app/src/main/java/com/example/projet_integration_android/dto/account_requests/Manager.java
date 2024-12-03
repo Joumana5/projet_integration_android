@@ -1,10 +1,27 @@
 package com.example.projet_integration_android.dto.account_requests;
 
 public class Manager {
+    private Integer id;
     private String firstName;
     private String lastName;
     private String email;
     private String grade;
+
+    public Manager(Integer id, String firstName, String lastName, String email, String grade) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.grade = grade;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Manager(String firstName, String lastName, String email, String grade) {
         this.firstName = firstName;

@@ -45,6 +45,14 @@
             android:text="Grade"
             android:textStyle="bold"
             android:gravity="center" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Action"
+            android:textStyle="bold"
+            android:gravity="center" />
+
     </LinearLayout>
 
     <!-- RecyclerView for Table Rows -->
