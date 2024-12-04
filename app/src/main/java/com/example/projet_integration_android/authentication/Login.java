@@ -73,7 +73,7 @@ public class Login extends AppCompatActivity {
                 } else {
 
                     LoginDto loginData = new LoginDto(email, password);
-                    ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+                    ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
 
                     apiService.login(loginData).enqueue(new Callback<LoginResponseDto>() {
 

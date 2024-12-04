@@ -42,7 +42,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
             Toast.makeText(ResetPasswordActivity.this, "Email is required", Toast.LENGTH_SHORT).show();
         } else {
             SendResetEmailDto sendResetEmail = new SendResetEmailDto(email);
-            ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+            ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
             apiService.sendResetEmail(sendResetEmail).enqueue(new Callback<SendResetEmailResponseDto>() {
                 @Override
                 public void onResponse(Call<SendResetEmailResponseDto> call, Response<SendResetEmailResponseDto> response) {

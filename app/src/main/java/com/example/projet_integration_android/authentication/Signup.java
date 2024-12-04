@@ -81,7 +81,7 @@ public class Signup extends AppCompatActivity {
             }else {
 
                 try {
-                    ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+                    ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
 
                     EmployeeSignupDto employeeSignup = new EmployeeSignupDto(
                             firstName, lastName, Integer.parseInt(userAge), address, Integer.parseInt(ribNumber), email, password, "employee", "rh"

@@ -47,7 +47,7 @@ public class ManagerViewHolder extends RecyclerView.ViewHolder {
         email.setText(manager.getEmail());
         role.setText(manager.getGrade());
 
-        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
 
         check.setOnClickListener(v -> handleManagerAction(
                 manager.getId(),

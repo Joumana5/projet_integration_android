@@ -1,5 +1,6 @@
 package com.example.projet_integration_android.services;
 
+import com.example.projet_integration_android.dto.UserDto;
 import com.example.projet_integration_android.dto.ApiResponseDto;
 import com.example.projet_integration_android.dto.account_requests.AccountRequestDto;
 import com.example.projet_integration_android.dto.authentication.ChangePasswordDto;
@@ -18,6 +19,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -58,5 +60,12 @@ public interface ApiService {
     Call<ApiResponseDto<String>> handleManager(@Header("Authorization") String token,@Body AccountRequestDto accountRequestDto);
 
     @GET("/list/AllUsersAccepted")
-    Call<List<Employee>> getAllUsersAccepted(@Header("Authorization") String token);
+    Call<List<UserDto>> getAllUsersAccepted(@Header("Authorization") String token);
+
+    @DELETE("/list/{id}")
+    Call<String> deleteUser(@Path("id") int id);
+
+    @PUT("/list")
+    Call<String> updateUser(int id , UserDto userDto);
+
 }

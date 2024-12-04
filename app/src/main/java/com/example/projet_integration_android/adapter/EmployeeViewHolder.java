@@ -48,7 +48,7 @@ public class EmployeeViewHolder extends RecyclerView.ViewHolder {
         email.setText(employee.getEmail());
         role.setText(employee.getRole());
 
-        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
 
         check.setOnClickListener(v -> handleEmployeeAction(
                 employee.getId(),

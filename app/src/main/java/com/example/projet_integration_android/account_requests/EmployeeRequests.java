@@ -40,7 +40,7 @@ public class EmployeeRequests extends AppCompatActivity {
     }
 
     public void loadEmployeeRequests() {
-        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
         String token = getSharedPreferences("MyPrefs", MODE_PRIVATE).getString("token", null);
         apiService.getEmployeeRequests(token).enqueue(new Callback<List<Employee>>() {
             @Override

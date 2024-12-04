@@ -39,7 +39,7 @@ public class ManagerRequests extends AppCompatActivity {
     }
 
     public void loadManagerRequests() {
-        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
         String token = getSharedPreferences("MyPrefs", MODE_PRIVATE).getString("token", null);
         apiService.getManagerRequests(token).enqueue(new Callback<List<Manager>>() {
             @Override

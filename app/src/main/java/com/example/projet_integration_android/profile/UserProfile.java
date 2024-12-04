@@ -96,7 +96,7 @@ public class UserProfile extends AppCompatActivity {
 
 
         else {
-            ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+            ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
             apiService.getUserProfile(userId, token).enqueue(new Callback<ApiResponseDto<ProfileDetails>>() {
                 @Override
                 public void onResponse(Call<ApiResponseDto<ProfileDetails>> call, Response<ApiResponseDto<ProfileDetails>> response) {
@@ -146,7 +146,7 @@ public class UserProfile extends AppCompatActivity {
                 addressInput.getText().toString(),
                 userId);
 
-        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
 
         apiService.updateProfile(updateProfileDto, token).enqueue(new Callback<ApiResponseDto<String>>() {
             @Override

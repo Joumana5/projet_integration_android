@@ -57,7 +57,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
         ChangePasswordDto changePasswordDto = new ChangePasswordDto(email, password, code);
 
-        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
 
         apiService.resetPassword(changePasswordDto).enqueue(new Callback<SendResetEmailResponseDto>() {
             @Override

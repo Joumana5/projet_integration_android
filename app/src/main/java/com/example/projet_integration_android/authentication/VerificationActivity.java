@@ -53,7 +53,7 @@ public class VerificationActivity extends AppCompatActivity {
         } else {
             VerifyEmployeeDto verificationData = new VerifyEmployeeDto(email, code);
 
-            ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+            ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
             apiService.verifyEmail(verificationData).enqueue(new Callback<ApiResponseDto<String>>() {
                 @Override
                 public void onResponse(Call<ApiResponseDto<String>> call, Response<ApiResponseDto<String>> response) {
