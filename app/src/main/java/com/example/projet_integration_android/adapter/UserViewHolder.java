@@ -23,7 +23,6 @@ public class UserViewHolder extends RecyclerView.ViewHolder {
     public UserViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        // Initialize views
         firstName = itemView.findViewById(R.id.firstName);
         lastName = itemView.findViewById(R.id.lastName);
         email = itemView.findViewById(R.id.email);
@@ -42,4 +41,5 @@ public class UserViewHolder extends RecyclerView.ViewHolder {
 
 
     }
+
 }
